@@ -29,11 +29,11 @@
     <!-- 커넥션풀 설정 -->
     
     <Resource
-        name="jdbc/userdb"
+        name="jdbc/Jboard"
         auth="Container"
         type="javax.sql.DataSource"
         driverClassName="com.mysql.cj.jdbc.Driver"
-        url="jdbc:mysql://localhost:3306/userdb"
+        url="jdbc:mysql://localhost:3306/Jboard"
         username="root"
         password="1234"
         maxTotal="13"
