@@ -9,7 +9,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String uid = request.getParameter("uid");
+	String nick = request.getParameter("nick");
 	
 	int result = 0;
 	
@@ -19,8 +19,8 @@
 		DataSource ds = (DataSource) ctx.lookup("jdbc/Jboard");
 		
 		Connection conn = ds.getConnection();
-		PreparedStatement psmt = conn.prepareStatement("SELECT COUNT(*) FROM `User` WHERE `uid`=?");
-		psmt.setString(1, uid);
+		PreparedStatement psmt = conn.prepareStatement("SELECT COUNT(*) FROM `User` WHERE `nick`=?");
+		psmt.setString(1, nick); //setString으로 12번 라인의 nick을 22번 라인의 쿼리문 nick과 바인딩 
 		
 		ResultSet rs = psmt.executeQuery();
 		if(rs.next()){
