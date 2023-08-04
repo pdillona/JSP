@@ -1,3 +1,5 @@
+<%@page import="kr.co.jboard1.vo.UserVO"%>
+<%@page import="kr.co.jboard1.dao.UserDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="javax.sql.DataSource"%>
@@ -22,44 +24,20 @@
 	String addr2 = request.getParameter("addr2");
 	String regip = request.getRemoteAddr();
 	
+	UserVO vo = new UserVO();
+	vo.setUid(uid);
+	vo.setPass(pass1);
+	vo.setName(name);
+	vo.setNick(nick);
+	vo.setHp(hp);
+	vo.setAddr1(addr1);
+	vo.setAddr2(addr2);
+	vo.setAddr2(regip);
+	
+	
 	//데이터 베이스 처리
 
-	try{
-		//JNDI 서비스 객체 생성
-		Context initCtx = new InitialContext();
-		Context ctx = (Context) initCtx.lookup("java:comp/env");
-		
-		//커넥션 풀에서 커넥션 가져오기
-		DataSource ds = (DataSource) ctx.lookup("jdbc/Jboard");
-		Connection conn = ds.getConnection();
-		
-		
-		
-		String sql = "INSERT INTO `user` SET `uid`=?, `pass`=?, `name`=?,";
-				sql += "`nick`=?, `email`=?, `hp`=?, `zip`=?, `addr1`=?, `addr2`=?,";
-				sql += "`regip`=?, `regDate`=NOW()";
-		
-		PreparedStatement psmt = conn.prepareStatement(sql);
-
-		psmt.setString(1, uid);
-		psmt.setString(2, pass1);
-		psmt.setString(3, name);
-		psmt.setString(4, nick);
-		psmt.setString(5, email);
-		psmt.setString(6, hp);
-		psmt.setString(7, zip);
-		psmt.setString(8, addr1);
-		psmt.setString(9, addr2);
-		psmt.setString(10, regip);
-	
-		psmt.executeUpdate();
-
-		psmt.close();
-		conn.close();
-		
-	}catch(Exception e){
-		e.printStackTrace();
-	}
+	UserDAO.getInstance().insertUser(vo);
 	
 	response.sendRedirect("/Jboard1/user/login.jsp");
 	

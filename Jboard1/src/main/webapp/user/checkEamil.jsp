@@ -10,11 +10,11 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String uid = request.getParameter("uid");
+	String email = request.getParameter("email");
 	
-	int result = UserDAO.getInstance().selectCountUid(uid);
+	int result = UserDAO.getInstance().selectCountEmail(email);
 	
-
+	
 	
 	// Json 생성
 	JsonObject json = new JsonObject();

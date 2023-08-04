@@ -10,9 +10,9 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String uid = request.getParameter("uid");
+	String hp = request.getParameter("hp");
 	
-	int result = UserDAO.getInstance().selectCountUid(uid);
+	int result = UserDAO.getInstance().selectCountHp(hp);
 	
 
 	
