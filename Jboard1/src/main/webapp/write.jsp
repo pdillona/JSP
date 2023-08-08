@@ -1,19 +1,21 @@
+<%@page import="kr.co.jboard1.dto.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <main>
-    <section class="modify">
-        <h3>글수정</h3>
+    <section class="write">
+        <h3>글쓰기</h3>
         <article>
-            <form action="#">
+            <form action="/Jboard1/proc/writeProc.jsp" method="post">
+            	<input type="hidden" name="writer" readonly value="<%= sessUser.getUid() %>">
                 <table>
                     <tr>
                         <td>제목</td>
-                        <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
+                        <td><input type="text" name="title" required placeholder="제목을 입력하세요."/></td>
                     </tr>
                     <tr>
                         <td>내용</td>
                         <td>
-                            <textarea name="content"></textarea>                                
+                            <textarea name="content" required></textarea>                                
                         </td>
                     </tr>
                     <tr>
@@ -22,8 +24,8 @@
                     </tr>
                 </table>
                 <div>
-                    <a href="#" class="btnCancel">취소</a>
-                    <input type="submit"  class="btnWrite" value="수정완료">
+                    <a href="/Jboard1/list.jsp" class="btnCancel">취소</a>
+                    <input type="submit"  class="btnWrite" value="작성완료">
                 </div>
             </form>
         </article>

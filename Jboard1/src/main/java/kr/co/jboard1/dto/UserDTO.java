@@ -1,6 +1,6 @@
-package kr.co.jboard1.vo;
+package kr.co.jboard1.dto;
 
-public class UserVO {
+public class UserDTO {
 	
 	private String uid;
 	private String pass;
@@ -93,4 +93,7 @@ public class UserVO {
 	public void setLeaveDate(String leaveDate) {
 		this.leaveDate = leaveDate;
 	}	
+	
+	
+	
 }

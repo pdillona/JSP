@@ -1,7 +1,6 @@
-package kr.co.jboard1.vo;
+package kr.co.jboard1.dto;
 
-public class TermsVO {
-
+public class TermsDTO {
 	private String terms;
 	private String privacy;
 	
@@ -11,12 +10,11 @@ public class TermsVO {
 	public void setTerms(String terms) {
 		this.terms = terms;
 	}
+	
 	public String getPrivacy() {
 		return privacy;
 	}
 	public void setPrivacy(String privacy) {
 		this.privacy = privacy;
 	}
-	
-	
 }
