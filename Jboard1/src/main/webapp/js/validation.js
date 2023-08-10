@@ -28,10 +28,12 @@ $(function(){
 	
 	// 비밀번호 검사
 	$('input[name=pass2]').focusout(function(){
-		
+		const test = '';
 		const pass1 = $('input[name=pass1]').val();
 		const pass2 = $('input[name=pass2]').val();
 		
+		if(pass1 != test && pass2 != test){
+			
 		if(pass1 == pass2){
 			
 			if(pass1.match(rePass)){
@@ -44,6 +46,11 @@ $(function(){
 		}else{
 			$('.resultPass').css('color', 'red').text('비밀번호가 일치하지 않습니다.');
 			isPassOk = false;
+		}
+			
+		}else{
+			
+			$('.resultPass').css('color', 'black').text('test');
 		}
 	});
 	
