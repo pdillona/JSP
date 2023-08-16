@@ -6,6 +6,11 @@ $(function(){
 	// 아이디 중복체크
 	$('#btnCheckUid').click(function(){
 		
+		
+		const isCheck = ""; 
+		
+		if(!isCheck){
+		
 		const uid = $('input[name=uid]').val();
 		
 		if(!uid.match(reUid)){
@@ -13,6 +18,12 @@ $(function(){
 			isUidOk = false;
 			return; // 종료
 		}
+		    			
+		  }else{
+			  
+			  
+		  }
+		    			
 		    			
 		const jsonData = {
 			"uid": uid

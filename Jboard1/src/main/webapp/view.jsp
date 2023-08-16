@@ -31,6 +31,7 @@
 			const txt = $(this).text();
 			
 			if(txt == '수정'){
+				// 수정 모드 전환
 				$(this).parent().prev().addClass('modi');
 				$(this).parent().prev().attr('readonly', false);
 				$(this).parent().prev().focus();
@@ -39,9 +40,13 @@
 			}else{
 				
 				// 수정 완료 클릭
+				if(confirm('정말 수정 하시겠습니까?')){
+					//수정 데이터 전송
+					$(this).closest('form').submit();
+					
+				}
 				
-				// 수정 데이터 전송
-				$(this).closest('form').submit()
+
 				// 수정 모드 해제
 				$(this).parent().prev().removeClass('modi');
 				$(this).parent().prev().attr('readonly', true);
@@ -49,6 +54,18 @@
 				$(this).prev().hide();
 			}
 		});
+		
+		// 댓글 수정 취소
+	/* 	$('.can').click(function() {
+			e.preventDefault();
+			
+			// 수정 모드 해제
+			$(this).parent().prev().removeClass('modi');
+			$(this).parent().prev().attr('readonly', true);
+			$(this).hide();
+			$(this).next().text('수정');
+			
+		}); */
 		
 		// 댓글 삭제
 		$('.del').click(function() {
@@ -125,6 +142,8 @@
             <% for(ArticleDTO comment: comments){ %>
             <article class="comment">
             	<form action="/Jboard1/proc/commentUpdate.jsp" method="post">
+	                <input type="hidden" name="no" value="<%= comment.getNo()%>">
+	                <input type="hidden" name="parent" value="<%= comment.getParent()%>">
 	                <span>
 	                    <span><%=comment.getNick()%></span>
 	                    <span><%=comment.getRdate() %></span>
@@ -133,7 +152,7 @@
 	                <%if(sessUser.getUid().equals(comment.getWriter())){ %>
 	                <div>
 	                    <a href="/Jboard1/proc/commentDelete.jsp?no=<%= comment.getNo() %>&parent=<%= comment.getParent() %>" class="del">삭제</a>
-	                    <a href="#" class= "can">취소</a>
+	                    <a href="/Jboard1/view.jsp?no=<%= no %>" class= "can">취소</a>
 	                    <a href="#" class="mod">수정</a>
 	                </div>
                 

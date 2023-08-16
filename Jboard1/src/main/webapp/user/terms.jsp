@@ -80,7 +80,7 @@
             </section>
         </main>
         <footer>
-            <p>ⓒcopyright 김철학.com</p>
+            <p>ⓒcopyright J.com</p>
         </footer>
     </div>
 </body>

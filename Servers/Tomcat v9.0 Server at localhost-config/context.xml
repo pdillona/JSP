@@ -43,7 +43,20 @@
 		
 		
     
-  
+    <!-- 커넥션풀 Farmstory -->
+    
+    <Resource
+        name="jdbc/Farmstory"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.cj.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/Farmstory"
+        username="root"
+        password="1234"
+        maxTotal="13"
+        maxIdle="13"
+        maxWaitMillis="3000"
+    />
     
     
     
