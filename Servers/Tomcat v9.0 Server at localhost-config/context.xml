@@ -26,8 +26,8 @@
     <!--
     <Manager pathname="" />
     -->
-    <!-- 커넥션풀 설정 -->
     
+    <!-- 커넥션 풀 설정ver2 -->
     <Resource
         name="jdbc/Jboard"
         auth="Container"
@@ -38,13 +38,10 @@
         password="1234"
         maxTotal="13"
         maxIdle="13"
-        maxWaitMillis="3000"
+        maxWaitMillis="10000"
     />
-		
-		
-    
-    <!-- 커넥션풀 Farmstory -->
-    
+
+    <!-- 커넥션 풀 설정ver3 -->
     <Resource
         name="jdbc/Farmstory"
         auth="Container"
@@ -55,7 +52,7 @@
         password="1234"
         maxTotal="13"
         maxIdle="13"
-        maxWaitMillis="3000"
+        maxWaitMillis="10000"
     />
     
     

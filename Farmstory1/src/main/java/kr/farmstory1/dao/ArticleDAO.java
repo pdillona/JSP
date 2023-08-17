@@ -1,11 +1,11 @@
-package kr.co.jboard1.dao;
+package kr.farmstory1.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.co.jboard1.db.DBHelper;
-import kr.co.jboard1.db.SQL;
-import kr.co.jboard1.dto.ArticleDTO;
+import kr.farmstory1.db.DBHelper;
+import kr.farmstory1.db.SQL;
+import kr.farmstory1.dto.ArticleDTO;
 
 public class ArticleDAO extends DBHelper {
 
@@ -14,10 +14,11 @@ public class ArticleDAO extends DBHelper {
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getWriter());
-			psmt.setString(4, dto.getRegip());
+			psmt.setString(1, dto.getCate());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getWriter());
+			psmt.setString(5, dto.getRegip());
 			psmt.executeUpdate();
 			close();
 		}catch(Exception e){
@@ -58,14 +59,15 @@ public class ArticleDAO extends DBHelper {
 		return dto;
 	}
 	
-	public List<ArticleDTO> selectArticles(int start) {
+	public List<ArticleDTO> selectArticles(String cate, int start) {
 		
 		List<ArticleDTO> articles = new ArrayList<>();
 		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
-			psmt.setInt(1, start);
+			psmt.setString(1, cate);
+			psmt.setInt(2, start);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -120,13 +122,14 @@ public class ArticleDAO extends DBHelper {
 	}
 
 	// 추가 
-	public int selectCountTotal() {
+	public int selectCountTotal(String cate) {
 		
 		int total = 0;
 		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
+			psmt.setString(1, cate);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				total = rs.getInt(1);

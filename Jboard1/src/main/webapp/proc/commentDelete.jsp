@@ -1,14 +1,12 @@
 <%@page import="kr.co.jboard1.dao.ArticleDAO"%>
+<%@page import="kr.co.jboard1.dto.ArticleDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-
-
-	String no = request.getParameter("no");
-	String parent= request.getParameter("parent");
+	String no     = request.getParameter("no");
+	String parent = request.getParameter("parent");
 
 	ArticleDAO dao = new ArticleDAO();
-	
 	
 	// 댓글 삭제
 	dao.deleteComment(no);
@@ -17,5 +15,4 @@
 	dao.updateAticleForCommentMinus(parent);
 	
 	response.sendRedirect("/Jboard1/view.jsp?no="+parent);
-
 %>

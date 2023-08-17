@@ -1,4 +1,4 @@
-package kr.co.jboard1.dto;
+package kr.farmstory1.dto;
 
 public class ArticleDTO {
 	private int no;
@@ -38,6 +38,7 @@ public class ArticleDTO {
 	public void setParent(int parent) {
 		this.parent = parent;
 	}
+	
 	public void setParent(String parent) {
 		this.parent = Integer.parseInt(parent);
 	}

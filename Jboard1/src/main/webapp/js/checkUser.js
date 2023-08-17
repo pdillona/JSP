@@ -6,11 +6,6 @@ $(function(){
 	// 아이디 중복체크
 	$('#btnCheckUid').click(function(){
 		
-		
-		const isCheck = ""; 
-		
-		if(!isCheck){
-		
 		const uid = $('input[name=uid]').val();
 		
 		if(!uid.match(reUid)){
@@ -18,12 +13,6 @@ $(function(){
 			isUidOk = false;
 			return; // 종료
 		}
-		    			
-		  }else{
-			  
-			  
-		  }
-		    			
 		    			
 		const jsonData = {
 			"uid": uid
@@ -48,7 +37,7 @@ $(function(){
 	}); // 아이디 중복체크 끝
 	
 	// 닉네임 중복체크
-	$('input[name=nick]').focusout(function(){ //keyup은 텍스트 입력시마다 비교, focusout은 텍스트 커서가 out될 때 마다 비교
+	$('input[name=nick]').focusout(function(){
 		
 		// 입력 데이터 가져오기
 		const nick = $(this).val();
@@ -77,16 +66,8 @@ $(function(){
 		
 	});// 닉네임 중복체크 끝
 	
-	
-	/*$.ajax({
-			url: './checkNick.jsp?nick='+ nick +'&key='+key, //주소뒤에 파라메타를 붙이는것이 가능하다. 하지만 계속해서 보내야할 데이터가 늘어나면 불편하기 때문에 jsonData를 따로 생성해 준다.
-			
-			
-		});*/
-	
-	
 	// 이메일 중복체크
-	document.getElementsByName('email')[0].onfocusout = function(){ 
+	document.getElementsByName('email')[0].onfocusout = function(){
 		
 		const resultEmail = document.getElementById('resultEmail');
 		

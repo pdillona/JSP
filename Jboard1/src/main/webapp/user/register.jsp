@@ -100,7 +100,7 @@
             </section>
         </main>
         <footer>
-            <p>ⓒcopyright j.com</p>
+            <p>ⓒcopyright 김철학.com</p>
         </footer>
     </div>
 </body>
