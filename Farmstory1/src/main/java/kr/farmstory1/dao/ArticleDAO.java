@@ -10,6 +10,37 @@ import kr.farmstory1.dto.ArticleDTO;
 public class ArticleDAO extends DBHelper {
 
 	// 기본 CRUD
+	
+	
+	
+	public List<ArticleDTO> selectLatests(String cate, int size) {
+		
+		List<ArticleDTO> latests = new ArrayList<ArticleDTO>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_LATESTS);
+			psmt.setString(1, cate);
+			psmt.setInt(2, size);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ArticleDTO dto = new ArticleDTO();
+				dto.setNo(rs.getInt("no"));
+				dto.setTitle(rs.getString("title"));
+				dto.setRdate(rs.getString("rdate"));
+				latests.add(dto);
+			}
+			
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return latests;
+	}
+	
 	public void insertArticle(ArticleDTO dto) {
 		try {
 			conn = getConnection();
@@ -24,6 +55,7 @@ public class ArticleDAO extends DBHelper {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public ArticleDTO selectArticle(String no) {

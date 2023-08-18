@@ -38,6 +38,10 @@ public class SQL {
 												+ "`regip`=?,"
 												+ "`rdate`=NOW()";
 	
+	public final static String SELECT_LATESTS = "SELECT `no`, `title`, `rdate` FROM `Article` "
+												+ "WHERE `parent`=0 AND `cate` =? "
+												+ "Order BY `no` DESC LIMIT ?";
+	
 	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` WHERE `no`=?";
 	public final static String SELECT_ARTICLES = "SELECT "
 												+ "a.*, "
@@ -66,6 +70,5 @@ public class SQL {
 
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
-	
 	
 }

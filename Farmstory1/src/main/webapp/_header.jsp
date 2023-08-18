@@ -1,8 +1,10 @@
 <%@page import="kr.farmstory1.dto.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("UTF-8");
+	String success = request.getParameter("success");
+	
 	UserDTO sessUser = (UserDTO) session.getAttribute("sessUser");
-
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +19,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>    
     <script>
+    
+    const success = <%= success%>;
+    
+    if(success == 100){
+    	alert("로그인 실패, 아이디 또는 비밀번호를 확인해 주세요")
+    }else if(success == 101){
+    	alert("먼저 로그인을 해주세요")
+    }
+    
+    
+    
         $(function(){
             $('.slider > ul').bxSlider({
                 slideWidth: 980,
