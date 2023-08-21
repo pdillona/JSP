@@ -70,5 +70,21 @@ public class SQL {
 
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
+
+	
+	//product
+	
+	public final static String INSERT_PRODUCT = "INSERT INTO `Product` SET "
+											  + "`type`= ?, "
+											  + "`pName`= ?, "
+											  + "`price`= ?, "
+											  + "`delivery`= ?, "
+											  + "`stock`= ?, "
+											  + "`thumb1`= ?, "
+											  + "`thumb2`= ?, "
+											  + "`thumb3`= ?, "
+											  + "`seller`= ?, "
+											  + "`etc`= ?, "
+											  + "`rdate`= NOW(); ";
 	
 }
