@@ -8,4 +8,4 @@
 	dao.deleteArticle(no);
 	
 	response.sendRedirect("/Jboard1/list.jsp");
-%>
+%> 

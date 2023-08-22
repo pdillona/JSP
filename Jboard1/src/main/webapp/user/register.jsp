@@ -22,7 +22,7 @@
                 <form id="formUser" action="/Jboard1/user/registerProc.jsp" method="post">
                     <table border="1">
                         <caption>사이트 이용정보 입력</caption>
-                        <tr>
+                        <tr> 
                             <td>아이디</td>
                             <td>
                                 <input type="text" name="uid" placeholder="아이디 입력"/>

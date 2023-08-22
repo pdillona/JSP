@@ -19,7 +19,7 @@
 	int pageGroupCurrent = 1;
 	int pageGroupStart = 1;
 	int pageGroupEnd = 0;
-	int pageStartNum = 0;
+	int pageStartNum = 0; 
 	
 	// 현재 페이지 계산
 	if(pg != null){

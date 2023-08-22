@@ -17,7 +17,7 @@
             <form action="/Jboard1/proc/updateProc.jsp" method="post">
             	<input type="hidden" name="no" value="<%= no %>">
                 <table>
-                    <tr>
+                    <tr> 
                         <td>제목</td>
                         <td><input type="text" name="title" value="<%= dto.getTitle() %>" placeholder="제목을 입력하세요."/></td>
                     </tr>

@@ -23,7 +23,7 @@
 	vo.setWriter(writer);
 	vo.setRegip(regip);
 	
-	// 데이터베이스 처리
+	// 데이터베이스 처리 
 	ArticleDAO dao = new ArticleDAO();
 	dao.insertArticle(vo);
 	

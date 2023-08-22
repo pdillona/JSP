@@ -19,7 +19,7 @@ request.setCharacterEncoding("UTF-8");
 	String zip   = request.getParameter("zip");
 	String addr1 = request.getParameter("addr1");
 	String addr2 = request.getParameter("addr2");
- 	String regip = request.getRemoteAddr();
+ 	String regip = request.getRemoteAddr();  
 
  	UserDTO dto = new UserDTO();
  	dto.setUid(uid);

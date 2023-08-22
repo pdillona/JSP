@@ -23,4 +23,4 @@
 	dao.updateAticleForCommentPlus(parent);
 	
 	response.sendRedirect("/Jboard1/view.jsp?no="+parent);
-%>
+%> 

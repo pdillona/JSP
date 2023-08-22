@@ -28,7 +28,7 @@
             <a href="./index.jsp" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
             <p>
                 <a href="../index.jsp">HOME |</a>
-                <a href="#">로그아웃 |</a>
+                <a href="../user/logout.jsp">로그아웃 |</a>
                 <a href="#">고객센터</a>
             </p>
         </header>

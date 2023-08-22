@@ -18,7 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
-    <div id="container">
+    <div id="container"> 
         <header>
             <h3><a href="/Jboard1">Board System v1.0</a></h3>
             <p>

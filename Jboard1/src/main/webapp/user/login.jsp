@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/Jboard1/css/style.css">
     <script>
     	const success = <%= success %>;
-    	
+    	 
     	if(success == 100){
     		// 로그인 실패
     		alert('로그인에 실패 했습니다. 다시 확인 하시기 바랍니다.');

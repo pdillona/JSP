@@ -22,4 +22,4 @@
 	// Json 출력
 	String jsonData = json.toString();
 	out.print(jsonData);
-%>
+%> 

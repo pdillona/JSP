@@ -10,4 +10,4 @@
  	dao.updateComment(no, comment);
 	
 	response.sendRedirect("/Jboard1/view.jsp?no="+parent);
-%>
+%> 

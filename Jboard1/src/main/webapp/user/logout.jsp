@@ -5,4 +5,4 @@
 
 	// 리다이렉트
 	response.sendRedirect("/Jboard1/user/login.jsp");
-%>
+%> 
