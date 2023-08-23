@@ -5,7 +5,6 @@ import java.util.List;
 
 import kr.farmstory1.db.DBHelper;
 import kr.farmstory1.db.SQL;
-import kr.farmstory1.dto.ArticleDTO;
 import kr.farmstory1.dto.ProductDTO;
 
 public class ProductDAO extends DBHelper {
@@ -32,24 +31,43 @@ public class ProductDAO extends DBHelper {
 		}
 	}
 	
-	public ProductDTO selectProduct(int pNo) {
-		return null;
-	}
-	
-	public List<ProductDTO> selectProducts(String type, int start) {
-		
-			List<ProductDTO> products = new ArrayList<>();
-		
+	public ProductDTO selectProduct(String pNo) {
+		ProductDTO dto = new ProductDTO();
 		try {
 			conn = getConnection();
-			if(type.equals("0")) {
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
+			psmt.setString(1, pNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setpNo(rs.getInt(1));
+				dto.setType(rs.getInt(2));
+				dto.setpName(rs.getString(3));
+				dto.setPrice(rs.getInt(4));
+				dto.setDelivery(rs.getInt(5));
+				dto.setStock(rs.getInt(6));
+				dto.setSold(rs.getInt(7));
+				dto.setThumb1(rs.getString(8));
+				dto.setThumb2(rs.getString(9));
+				dto.setThumb3(rs.getString(10));
+				dto.setSeller(rs.getString(11));
+				dto.setEtc(rs.getString(12));
+				dto.setRdate(rs.getString(13));
+			}
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	public List<ProductDTO> selectProducts(int start) {
+		
+		List<ProductDTO> products = new ArrayList<>();
+		try {
+			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_ALL);
 			psmt.setInt(1, start);
-			}else {
-			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TYPE);
-			psmt.setString(1, type);
-			psmt.setInt(2, start);
-			}
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -70,21 +88,83 @@ public class ProductDAO extends DBHelper {
 				products.add(dto);
 			}
 			close();
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return products;
 	}
+
+	public List<ProductDTO> selectProducts(String type, int start) {
+		
+		List<ProductDTO> products = new ArrayList<>();
+		try {
+			conn = getConnection();
+			
+			if(type.equals("0")) {
+				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_ALL);
+				psmt.setInt(1, start);
+			}else {
+				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TYPE);
+				psmt.setString(1, type);
+				psmt.setInt(2, start);
+			}
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setpNo(rs.getInt(1));
+				dto.setType(rs.getInt(2));
+				dto.setpName(rs.getString(3));
+				dto.setPrice(rs.getInt(4));
+				dto.setDelivery(rs.getInt(5));
+				dto.setStock(rs.getInt(6));
+				dto.setSold(rs.getInt(7));
+				dto.setThumb1(rs.getString(8));
+				dto.setThumb2(rs.getString(9));
+				dto.setThumb3(rs.getString(10));
+				dto.setSeller(rs.getString(11));
+				dto.setEtc(rs.getString(12));
+				dto.setRdate(rs.getString(13));
+				products.add(dto);
+			}
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+	
+	
+	
 	public void updateProduct(ProductDTO dto) {}
 	public void deleteProduct(int pNo) {}
 	
-	public int selectCountProductsTotal(String type) {
-		
+	// 추가
+	public int selectCountProductsTotal() {
 		int total = 0;
 		
 		try {
 			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_PRODUCTS_ALL);
+			rs = psmt.executeQuery();
 			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return total;
+	}
+	
+	public int selectCountProductsTotal(String type) {
+		int total = 0;
+		
+		try {
+			conn = getConnection();
 			if(type.equals("0")) {
 				psmt = conn.prepareStatement(SQL.SELECT_COUNT_PRODUCTS_ALL);
 			}else {
@@ -97,10 +177,11 @@ public class ProductDAO extends DBHelper {
 				total = rs.getInt(1);
 			}
 			close();
-		} catch (Exception e) {
+			
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return total;
 	}
-	
 }
