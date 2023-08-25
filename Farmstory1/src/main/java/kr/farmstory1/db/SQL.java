@@ -93,23 +93,32 @@ public class SQL {
 	public final static String SELECT_COUNT_PRODUCTS_ALL = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0";
 	public final static String SELECT_COUNT_PRODUCTS_TYPE = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0 AND `type`=?";
 	
-	
 	// Order
+	public static final String INSERT_ORDER = "INSERT INTO `Order` SET "
+											+ "`orderProduct`=?,"
+											+ "`orderCount`=?,"
+											+ "`orderDelivery`=?,"
+											+ "`orderPrice`=?,"
+											+ "`orderTotal`=?,"
+											+ "`receiver`=?,"
+											+ "`hp`=?,"
+											+ "`zip`=?,"
+											+ "`addr1`=?,"
+											+ "`addr2`=?,"
+											+ "`orderEtc`=?,"
+											+ "`orderUser`=?,"
+											+ "`orderDate`=NOW()";
 	
-	public final static String INSERT_ORDER = "INSERT INTO `Order` SET "
-											+ "`orderProduct` = ?,"
-											+ "`orderCount` = ?,"
-											+ "`orderDelivery` =?,"
-											+ "`orderPrice` = ?,"
-											+ "`orderTotal` = ?,"
-											+ "`receiver` = ?,"
-											+ "`hp` = ?,"
-											+ "`zip` = ?,"
-											+ "`addr1` = ?,"
-											+ "`addr2` = ?,"
-											+ "`orderEtc` = ?,"
-											+ "`orderUser` = ?,"
-											+ "`orderDate` = NOW() ";
-											
+	public static final String SELECT_ORDERS = "SELECT "
+												+ "a.*,"
+												+ "b.`pName`,"
+												+ "b.`thumb1` "
+												+ "FROM `Order` AS a "
+												+ "JOIN `Product` AS b "
+												+ "ON a.orderProduct = b.pNo "
+												+ "LIMIT ?, 10";
+	
+	public static final String SELECT_COUNT_ORDERS = "SELECT COUNT(*) FROM `Order`";
+	public static final String DELETE_ORDER = "DELETE FROM `Order` WHERE `orderNo`=?";
 	
 }

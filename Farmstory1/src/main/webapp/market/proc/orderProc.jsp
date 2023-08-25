@@ -31,6 +31,7 @@
 	dto.setAddr2(addr2);
 	dto.setOrderEtc(etc);
 	dto.setOrderUser(orderUser);
+
 	
 	OrderDAO dao = new OrderDAO();
 	dao.insertOrder(dto);

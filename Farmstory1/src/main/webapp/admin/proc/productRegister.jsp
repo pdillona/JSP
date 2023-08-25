@@ -16,10 +16,10 @@
 	String price       = mr.getParameter("price");
 	String delivery    = mr.getParameter("delivery");
 	String stock       = mr.getParameter("stock");
-	String thumb1    = mr.getOriginalFileName("thumb1");
-	String thumb2    = mr.getOriginalFileName("thumb2");
-	String thumb3    = mr.getOriginalFileName("thumb3");
-	String seller    = mr.getParameter("seller");
+	String thumb1      = mr.getOriginalFileName("thumb1");
+	String thumb2      = mr.getOriginalFileName("thumb2");
+	String thumb3      = mr.getOriginalFileName("thumb3");
+	String seller      = mr.getParameter("seller");
 	String etc         = mr.getParameter("etc");
 	
 
