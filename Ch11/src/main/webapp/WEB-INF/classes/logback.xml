@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <property name="NAME" value="Ch11" />
+  <!-- 배포용 --> <!-- 파일 출력의 file 태그의 경로 변경해 줘야함 -->
+  <property name="DIR" value="/home/tomcat/logs" />
+ <!--  개발용
+ <property name="DIR" value="/logs" />  --> 
+
+  <!--  콘솔 출력  -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+   <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+     <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <!-- 파일 출력 -->
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+  	<file>${DIR}/${NAME}.log</file>
+  	<append>true</append>
+  	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+     <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+  </appender> 
+
+
+  <!-- 롤링 어펜더 -->
+  
+  
+
+  
+  <!-- turn OFF all logging (children can override) -->
+  <root level="error">
+    <!-- <appender-ref ref="STDOUT" />  배포시 시스템 출력 필요 X -->
+    <appender-ref ref="FILE" />
+  </root>
+
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+

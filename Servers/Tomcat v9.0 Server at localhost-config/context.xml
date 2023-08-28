@@ -40,6 +40,20 @@
         maxIdle="13"
         maxWaitMillis="10000"
     />
+    
+    <!-- 커넥션 풀 설정ver2 -->
+    <Resource
+        name="jdbc/Jboard"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.cj.jdbc.Driver"
+        url="jdbc:mysql://3.25.59.91:3306/Jboard"
+        username="jboard"
+        password="Sa1953vb!"
+        maxTotal="13"
+        maxIdle="13"
+        maxWaitMillis="10000"
+    />
 
     <!-- 커넥션 풀 설정ver3 -->
 <!--     <Resource
@@ -63,6 +77,20 @@
         driverClassName="com.mysql.cj.jdbc.Driver"
         url="jdbc:mysql://3.25.59.91:3306/Farmstory"
         username="farmstory"
+        password="Sa1953vb!"
+        maxTotal="13"
+        maxIdle="13"
+        maxWaitMillis="10000"
+    />
+    
+    <!-- 커넥션 풀 설정ver5 -->
+    <Resource
+        name="jdbc/UserDB"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.cj.jdbc.Driver"
+        url="jdbc:mysql://3.25.59.91:3306/UserDB"
+        username="user"
         password="Sa1953vb!"
         maxTotal="13"
         maxIdle="13"
