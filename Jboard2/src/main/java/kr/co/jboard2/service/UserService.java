@@ -19,16 +19,16 @@ import kr.co.jboard2.dao.UserDAO;
 import kr.co.jboard2.dto.UserDTO;
 
 public class UserService {
+	
 	private static UserService instance = new UserService();
 	public static UserService getInstance() {
 		return instance;
 	}
 	private UserService() {}
 	
-	private static String generatedCode;
-
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserDAO dao = UserDAO.getInstance();
+	private String generatedCode;
 	
 	public void insertUser(UserDTO dto) {
 		dao.insertUser(dto);
@@ -46,8 +46,20 @@ public class UserService {
 		return dao.selectCountHp(hp);
 	}
 	
-	public UserDTO selectUser(String uid) {
-		return dao.selectUser(uid);
+	public int selectCountEmail(String email) {
+		return dao.selectCountEmail(email);
+	}
+	
+	public int selectCountNameAndEmail(String name, String email) {
+		return dao.selectCountNameAndEmail(name, email);				
+	}
+	
+	public UserDTO selectUser(String uid, String pass) {
+		return dao.selectUser(uid, pass);
+	}
+	
+	public UserDTO selectUserByNameAndEmail(String name, String email) {
+		return dao.selectUserByNameAndEmail(name, email);				
 	}
 	
 	public List<UserDTO> selectUsers() {
@@ -65,12 +77,12 @@ public class UserService {
 	public int sendCodeByEmail(String receiver) {
 		
 		// 인증코드 생성
-		int code = ThreadLocalRandom.current().nextInt(100000, 1000000);
-		generatedCode = ""+code;
+		int code = ThreadLocalRandom.current().nextInt(100000, 1000000);		
+		generatedCode = String.valueOf(code);
 		
 		// 기본정보
-		String sender = "dbtmzp1@gmail.com";
-		String password = "vuiovxoanciugcmu";
+		String sender = "chhak0503@gmail.com";
+		String password = "hmdlvbblvplewjhj";
 		String title = "Jboard2 인증코드 입니다.";
 		String content = "<h1>인증코드는 " + code + "</h1>";
 		

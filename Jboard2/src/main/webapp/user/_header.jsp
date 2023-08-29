@@ -3,7 +3,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>비밀번호 변경</title>
+    <title>Jboard2</title>
     <link rel="stylesheet" href="/Jboard2/css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
@@ -11,5 +11,8 @@
     <div id="wrapper">
         <header>
             <h3>Board System v2.0</h3>
+            <p>
+                <span><a href="/Jboard2/myInfo.do"> ${sessUser.nick} </a></span>님 반갑습니다.
+                <a href="/Jboard2/logout.do">[로그아웃]</a>
+            </p>
         </header>
-        <main id="user">
