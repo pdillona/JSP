@@ -3,9 +3,9 @@ package kr.co.jboard2.dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.jboard2.db.DBHelper;
+import kr.co.jboard2.db.SQL;
 import kr.co.jboard2.dto.TermsDTO;
-import kr.co.jobard2.db.DBHelper;
-import kr.co.jobard2.db.SQL;
 
 public class TermsDAO extends DBHelper{
 	

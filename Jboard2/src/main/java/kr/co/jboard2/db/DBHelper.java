@@ -1,4 +1,4 @@
-package kr.co.jobard2.db;
+package kr.co.jboard2.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

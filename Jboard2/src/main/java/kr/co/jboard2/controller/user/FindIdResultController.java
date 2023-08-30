@@ -9,36 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import kr.co.jboard2.dto.UserDTO;
 import kr.co.jboard2.service.UserService;
 
 @WebServlet("/findIdResult.do")
-public class FindIdResultController extends HttpServlet{
+public class FindIdResultController extends HttpServlet {
 
-
-	private static final long serialVersionUID = -3664501897454960878L;
-	
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private static final long serialVersionUID = 3937203520925203466L;
 	private UserService service = UserService.getInstance();
 	
-	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		String name = req.getParameter("name");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String name  = req.getParameter("name");
 		String email = req.getParameter("email");
 		
 		UserDTO user = service.selectUserByNameAndEmail(name, email);
 		req.setAttribute("user", user);
 		
-		logger.info("user : " + user);
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/findIdResult.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
-
 }

@@ -1,24 +1,27 @@
-<%@ page  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script src="/Jboard2/js/validation.js"></script>
 <script src="/Jboard2/js/authEmail.js"></script>
 <script>
-
-	$(function () {
-		$('.btnNext').click(function (e) {
+	
+	$(function(){
+		
+		$('.btnNext').click(function(e){
 			e.preventDefault();
 			
 			if(isEmailOk){
 				$('#formFindId').submit();
 			}else{
-				alert('이메일 인증을 해주세요');	
+				alert('이메일 인증을 수행하셔야 합니다.');
 			}
 		});
 	});
-	
+
 </script>
 <main id="user">
     <section class="find findId">
-        <form id="formFindId" action="/Jboard2/findIdResult.do" method="get">
+        <form id="formFindId" action="/Jboard2/findIdResult.do" method="POST">
+        	<input type="hidden" name="type" value="FIND_ID"/>
             <table border="0">
                 <caption>아이디 찾기</caption>
                 <tr>
@@ -35,7 +38,7 @@
                         </div>
                         <div>
                             <input type="text" name="auth" disabled placeholder="인증번호 입력"/>
-                       		<button type="button" id="btnEmailAuth" class="btnConfirm">확인</button>
+                            <button type="button" id="btnEmailAuth" class="btnConfirm">확인</button>
                         </div>
                     </td>
                 </tr>                        
@@ -49,7 +52,7 @@
 
         <div>
             <a href="/Jboard2/login.do" class="btn btnCancel">취소</a>
-            <a href="#" class="btn btnNext">다음</a>
+            <a href="/Jboard2/findIdResult.do" class="btn btnNext">다음</a>
         </div>
     </section>
 </main>

@@ -1,43 +1,71 @@
-package kr.co.jobard2.db;
+package kr.co.jboard2.db;
 
 public class SQL {
 	// User
 	public static final String INSERT_USER = "INSERT INTO `User` SET "
-											+ "`uid`=?, "
-											+ "`pass`=SHA2(?, 256), "
-											+ "`name`=?, "											
-											+ "`nick`=?, "
-											+ "`email`=?, "
-											+ "`hp`=?, "
-											+ "`zip`=?, "
-											+ "`addr1`=?, "
-											+ "`addr2`=?, "
-											+ "`regip`=?, "
+											+ "`uid`=?,"
+											+ "`pass`=SHA2(?, 256),"
+											+ "`name`=?,"											
+											+ "`nick`=?,"
+											+ "`email`=?,"
+											+ "`hp`=?,"
+											+ "`zip`=?,"
+											+ "`addr1`=?,"
+											+ "`addr2`=?,"
+											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
 	
 	public static final String SELECT_USER        = "SELECT * FROM `User` WHERE `uid`=? AND `pass`=SHA2(?, 256)";
-	public static final String SELECT_USER_BY_NAME_AND_EMAIL = "SELECT * FROM `User` WHERE `name`=? AND `email`= ?";
+	public static final String SELECT_USER_BY_NAME_AND_EMAIL = "SELECT * FROM `User` WHERE `name`=? AND `email`=?";
 	public static final String SELECT_COUNT_UID   = "SELECT COUNT(*) FROM `User` WHERE `uid`=?";
 	public static final String SELECT_COUNT_NICK  = "SELECT COUNT(*) FROM `User` WHERE `nick`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `email`=?";
-	public static final String SELECT_COUNT_NAME_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `name`= ? AND `email`=?";
+	public static final String SELECT_COUNT_NAME_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `name`=? AND `email`=?";
+	public static final String SELECT_COUNT_UID_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `uid`=? AND `email`=?";
 	public static final String SELECT_COUNT_HP    = "SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	public static final String SELECT_TERMS       = "SELECT * FROM `Terms`";
+	
+	
+	public static final String UPDATE_USER = "UPDATE `User` SET "
+												+ "`name`=?,"
+												+ "`nick`=?,"
+												+ "`email`=?,"
+												+ "`hp`=?,"
+												+ "`zip`=?,"
+												+ "`addr1`=?,"
+												+ "`addr2`=? "
+												+ " WHERE `uid`=?";
+	
+	public static final String UPDATE_USER_PASS   = "UPDATE `User` SET `pass`=SHA2(?, 256) WHERE `uid`=?";
+	public static final String UPDATE_USER_FOR_WITHDRAW = "UPDATE `User` SET "
+															+ "`pass`=null,"
+															+ "`name`=null,"
+															+ "`nick`=null,"
+															+ "`email`=null,"
+															+ "`hp`=null,"
+															+ "`role`=null,"
+															+ "`zip`=null,"
+															+ "`addr1`=null,"
+															+ "`addr2`=null,"
+															+ "`leaveDate`=NOW() "
+															+ " WHERE `uid`=?";
+
+	
 	
 	
 	// Article
 	public final static String INSERT_ARTICLE = "INSERT INTO `Article` SET "
 												+ "`title`=?, "
-												+ "`content`=?, "
-												+ "`writer`=?, "
-												+ "`regip`=?, "
+												+ "`content`=?,"
+												+ "`writer`=?,"
+												+ "`regip`=?,"
 												+ "`rdate`=NOW()";
 	
 	public final static String INSERT_COMMENT = "INSERT INTO `Article` SET "
 												+ "`parent`=?, "
-												+ "`content`=?, "
-												+ "`writer`=?, "
-												+ "`regip`=?, "
+												+ "`content`=?,"
+												+ "`writer`=?,"
+												+ "`regip`=?,"
 												+ "`rdate`=NOW()";
 	
 	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` WHERE `no`=?";
@@ -68,6 +96,19 @@ public class SQL {
 
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 			

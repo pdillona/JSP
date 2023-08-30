@@ -19,9 +19,7 @@ import kr.co.jboard2.service.UserService;
 @WebServlet("/checkHp.do")
 public class CheckHpController extends HttpServlet{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -967693116122230004L;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserService service = UserService.getInstance();

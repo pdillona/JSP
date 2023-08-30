@@ -56,7 +56,7 @@ public class LoginController extends HttpServlet{
 			resp.sendRedirect("/Jboard2/list.do");
 		}else {
 			// 리다이렉트
-			resp.sendRedirect("/Jboard2/user/login.do?success=100");
+			resp.sendRedirect("/Jboard2/login.do?success=100");
 		}
 	}
 }
