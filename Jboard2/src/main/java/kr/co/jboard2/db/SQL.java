@@ -25,7 +25,6 @@ public class SQL {
 	public static final String SELECT_COUNT_HP    = "SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	public static final String SELECT_TERMS       = "SELECT * FROM `Terms`";
 	
-	
 	public static final String UPDATE_USER = "UPDATE `User` SET "
 												+ "`name`=?,"
 												+ "`nick`=?,"
@@ -57,6 +56,7 @@ public class SQL {
 	public final static String INSERT_ARTICLE = "INSERT INTO `Article` SET "
 												+ "`title`=?, "
 												+ "`content`=?,"
+												+ "`file`=?,"
 												+ "`writer`=?,"
 												+ "`regip`=?,"
 												+ "`rdate`=NOW()";
@@ -68,13 +68,28 @@ public class SQL {
 												+ "`regip`=?,"
 												+ "`rdate`=NOW()";
 	
-	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` WHERE `no`=?";
+	public final static String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`";
+	
+	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` AS a "
+												+ "LEFT JOIN `File` AS b "
+												+ "ON a.`no` = b.`ano` "
+												+ "WHERE `no`=?";
+	
 	public final static String SELECT_ARTICLES = "SELECT "
 												+ "a.*, "
 												+ "b.`nick` "
 												+ "FROM `Article` AS a "
 												+ "JOIN `User` AS b ON a.writer = b.uid "
-												+ "WHERE `parent`=0 "
+												+ "WHERE `parent`=0 " 
+												+ "ORDER BY `no` DESC "
+												+ "LIMIT ?, 10";
+	
+	public final static String SELECT_ARTICLES_FOR_SEARCH = "SELECT "
+												+ "a.*, "
+												+ "b.`nick` "
+												+ "FROM `Article` AS a "
+												+ "JOIN `User` AS b ON a.writer = b.uid "
+												+ "WHERE `parent`=0 AND `title` LIKE ? "
 												+ "ORDER BY `no` DESC "
 												+ "LIMIT ?, 10";
 	
@@ -86,6 +101,8 @@ public class SQL {
 												+ "WHERE `parent`=?";
 	
 	public final static String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `Article` WHERE `parent`=0";
+	public final static String SELECT_COUNT_TOTAL_FOR_SEARCH = "SELECT COUNT(*) FROM `Article`"
+															+ "WHERE `parent` = 0 AND `title` LIKE ?;";
 	
 	
 	
@@ -97,14 +114,18 @@ public class SQL {
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
 	
+	// File
+	public final static String INSERT_FILE = "INSERT INTO `File` SET "
+											+ "`ano`=?,"
+											+ "`ofile`=?,"
+											+ "`sfile`=?,"
+											+ "`rdate`=NOW()";
 	
 	
+	public final static String SELECT_FILE = "SELECT * FROM `File` WHERE `fno` =?";
 	
 	
-	
-	
-	
-	
+	public final static String DELETE_FILE = "DELETE FROM `File` WHERE `ano` = ? ";
 	
 	
 	
